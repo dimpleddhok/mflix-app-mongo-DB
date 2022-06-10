@@ -2,7 +2,7 @@ from pymongo import MongoClient, UpdateOne
 from pymongo.errors import InvalidOperation
 from bson import ObjectId
 import dateutil.parser as parser
-
+import os
 """
 Ticket: Migration
 
@@ -14,9 +14,9 @@ us. We just need to make sure the correct operations are sent to MongoDB!
 """
 
 # ensure you update your host information below!
-host = "mongodb+srv://A_123:princy123@mflix.uteg3.mongodb.net/test"
+host = os.getenv('DB_HOST')
 # don't update this information
-MFLIX_DB_NAME = "sample_mflix"
+MFLIX_DB_NAME = os.getenv('DB_NAME')
 mflix = MongoClient(host)[MFLIX_DB_NAME]
 
 # TODO: Create the proper predicate and projection
